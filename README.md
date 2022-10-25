@@ -1,24 +1,77 @@
-This is a [Next.js](https://nextjs.org/)
+# Magazine API (Strapi)
 
-## Getting Started
+Strapi CMS pre-configured for [Next.js Magazine Starter](https://github.com/edgarlr/magazine). Deploy to Heroku in one click.
 
-First, run the development server:
+If you want to deploy to any other platform or set up a different [upload provider](https://strapi.io/documentation/developer-docs/latest/plugins/upload.html#using-a-provider) you can use the [strapi-template-magazine](https://github.com/edgarlr/strapi-template-magazine) instead.
+
+## Features
+
+- 4 Content types: Article, Category, Contributor, Pages.
+- Publication system (draft & published).
+- Preview unpublished content: Articles, pages.
+- Slug system
+- 2 Contributor types: Featured, default.
+- SEO and social media friendly
+- Role based access controls
+
+## API Routes
+
+- `/articles`
+- `/categories`
+- `/contributors`
+- `/pages`
+
+## Getting started
+
+Create your own copy of this project by clicking the ["Use this template"]('https://github.com/edgarlr/magazine-api/generate') button and filling the form.
+
+### Running locally
+
+Create a folder and `git clone` from your own repository.
+
+Install the dependencies and start the dev server.
 
 ```bash
-npm run dev
+    yarn install
+    yarn develop
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The strapi server will run on [http://localhost:1337](http://localhost:1337)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Go to the admin panel [(http://localhost:1337/admin)](http://localhost:1337), create an account and start adding sample content.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Deployment
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+First, you'll need a [Cloudinary](https://cloudinary.com) and a [Heroku](https://www.heroku.com/) account.
 
-## Learn More
+1. From your copy of the repo click the "Deploy to Heroku" button
 
-To learn more about Next.js, take a look at the following resources:
+<a href="https://www.heroku.com/deploy/?template=https://github.com/edgarlr/magazine-api">
+<img src="https://assets.strapi.io/uploads/Deploy_button_heroku_b1043fc67d.png" />
+</a>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Fill the Cloudinary ENV variables.
+3. Deploy
+4. Once is deployed, go to the admin panel e.g. `https://yourherokudomain.com/admin` and create an account.
+5. Last, go to "Setting" > "Users & permissions plugins" > "Public" > "Permissions" and check `find` on Article, Category, Contributor and Pages.
+
+### Adding Content
+
+The recommended flow for adding new content is:
+
+- Add contributor
+- Add category
+- Add article or page
+
+### Preview Content
+
+Once you have your frontend deployed go to "Settings" > "Preview Content"
+
+Fill it with your info, the URL should look like this.
+`https://<yoursite.com>/api/:contentType-preview?secret=<your-secret>&id=:id`
+
+Now, go to any article or page and click on "Preview".
+
+## License
+
+[MIT License](https://github.com/edgarlr/magazine-api/blob/main/LICENSE).
